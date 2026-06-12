@@ -1,60 +1,81 @@
-/*
- * Copyright (C) 2013 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
-package org.futo.inputmethod.latin.common;
+package com.nexvora.keyboard.latin.common;
 
 import java.io.File;
 import java.io.FilenameFilter;
 
 /**
- * A simple class to help with removing directories recursively.
+ * Utility class for file operations used in keyboard engine,
+ * including recursive deletion and safe file replacement.
+ *
+ * This is mainly used for dictionary management, cache cleanup,
+ * and temporary data handling.
  */
 public class FileUtils {
-    private static final String TAG = "FileUtils";
 
+    private static final String TAG = "NexVoraFileUtils";
+
+    /**
+     * Recursively deletes a file or directory.
+     *
+     * @param path file or directory to delete
+     * @return true if deletion succeeded
+     */
     public static boolean deleteRecursively(final File path) {
+
         if (path.isDirectory()) {
             final File[] files = path.listFiles();
+
             if (files != null) {
                 for (final File child : files) {
                     deleteRecursively(child);
                 }
             }
         }
+
         return path.delete();
     }
 
-    public static boolean deleteFilteredFiles(final File dir, final FilenameFilter fileNameFilter) {
+    /**
+     * Deletes files matching a filter inside a directory.
+     *
+     * @param dir target directory
+     * @param fileNameFilter filter condition
+     * @return true if all matched files were deleted successfully
+     */
+    public static boolean deleteFilteredFiles(final File dir,
+                                              final FilenameFilter fileNameFilter) {
+
         if (!dir.isDirectory()) {
             return false;
         }
+
         final File[] files = dir.listFiles(fileNameFilter);
+
         if (files == null) {
             return false;
         }
+
         boolean hasDeletedAllFiles = true;
+
         for (final File file : files) {
             if (!deleteRecursively(file)) {
                 hasDeletedAllFiles = false;
             }
         }
+
         return hasDeletedAllFiles;
     }
 
-    public static boolean renameTo(final File fromFile, final File toFile) {
+    /**
+     * Safely renames a file by deleting the target first.
+     *
+     * @param fromFile source file
+     * @param toFile destination file
+     * @return true if rename succeeded
+     */
+    public static boolean renameTo(final File fromFile,
+                                   final File toFile) {
+
         toFile.delete();
         return fromFile.renameTo(toFile);
     }
