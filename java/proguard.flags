@@ -1,28 +1,63 @@
-# Keep classes and methods that have the @UsedForTesting annotation
+########################################################
+# NexVora / LatinIME - ProGuard Rules (Production Safe)
+########################################################
+
+# -----------------------------
+# Keep test/debug annotations
+# -----------------------------
 -keep @org.futo.inputmethod.annotations.UsedForTesting class *
 -keepclassmembers class * {
     @org.futo.inputmethod.annotations.UsedForTesting *;
 }
 
-# Keep classes and methods that have the @ExternallyReferenced annotation
 -keep @org.futo.inputmethod.annotations.ExternallyReferenced class *
 -keepclassmembers class * {
     @org.futo.inputmethod.annotations.ExternallyReferenced *;
 }
 
-# Keep native methods
--keepclassmembers class * {
+# -----------------------------
+# Keep native methods (IMPORTANT for IME engine)
+# -----------------------------
+-keepclasseswithmembernames class * {
     native <methods>;
 }
 
-# Keep classes that are used as a parameter type of methods that are also marked as keep
-# to preserve changing those methods' signature.
--keep class org.futo.inputmethod.latin.AssetFileAddress
--keep class org.futo.inputmethod.latin.Dictionary
--keep class org.futo.inputmethod.latin.NgramContext
--keep class org.futo.inputmethod.latin.makedict.ProbabilityInfo
--keep class org.futo.inputmethod.latin.utils.LanguageModelParam
+# -----------------------------
+# Core LatinIME classes (DO NOT OBFUSCATE)
+# -----------------------------
+-keep class org.futo.inputmethod.latin.** { *; }
+-keep class org.futo.inputmethod.keyboard.** { *; }
 
-# TODO: remove once used in code.
+# -----------------------------
+# Dictionary / NLP core models
+# -----------------------------
+-keep class org.futo.inputmethod.latin.AssetFileAddress { *; }
+-keep class org.futo.inputmethod.latin.Dictionary { *; }
+-keep class org.futo.inputmethod.latin.NgramContext { *; }
+-keep class org.futo.inputmethod.latin.makedict.ProbabilityInfo { *; }
+-keep class org.futo.inputmethod.latin.utils.LanguageModelParam { *; }
+
+# -----------------------------
+# Keyboard layout (remove TODO risk)
+# -----------------------------
 -keep class org.futo.inputmethod.keyboard.KeyboardLayout { *; }
 
+# -----------------------------
+# Android runtime safety
+# -----------------------------
+-keepattributes *Annotation*
+-keepattributes Signature
+-keepattributes InnerClasses
+-keepattributes EnclosingMethod
+
+# -----------------------------
+# Prevent crashes in reflection-heavy IME code
+# -----------------------------
+-keepclassmembers class * {
+    public <init>(...);
+}
+
+# -----------------------------
+# Optional: reduce crash on reflection lookup
+# -----------------------------
+-dontwarn org.futo.inputmethod.**
