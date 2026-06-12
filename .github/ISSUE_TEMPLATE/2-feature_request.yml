@@ -1,55 +1,62 @@
 name: Feature Request
-description: Suggest a new feature or other enhancement.
-labels: ["Enhancement"]
-title: "Feature request: "
-type: feature
-projects: ["futo-org/23"]
+description: Suggest a new feature or improvement for NexVora Keyboard.
+labels: ["enhancement"]
+title: "Feature Request: "
+
 body:
   - type: markdown
     attributes:
       value: |
-        # Thank you for opening a feature request.
+        # 🚀 Thank you for suggesting a feature for NexVora Keyboard
 
-        The [android-keyboard](https://github.com/futo-org/android-keyboard) issue tracker is reserved for issues relating to the FUTO Keyboard Android Application
+        We appreciate your ideas to improve the keyboard experience.
 
-        For discussion related to enhancements, please see the [FUTO Keyboard Zulip Channel](https://chat.futo.org/#narrow/stream/53-Keyboard) or the [FUTO Keyboard Discord](https://keyboard.futo.org/discord)
+        ⚠️ Please note:
+        - Submit one feature request per issue.
+        - Avoid combining multiple ideas in one request.
+        - Make sure you're using the latest version before submitting.
 
-        Please open feature requests one at a time. If you have 3 separate feature requests/bugs, do not combine them into one issue, this makes it really difficult to track and understand them.
-
-        Before opening a feature request, please make sure you're using the latest version of the keyboard, it may have already been added.
   - type: textarea
-    id: keyboard-use-case
+    id: use-cases
     attributes:
       label: Use Cases
       description: |
-        In order to properly evaluate a feature request, it is necessary to understand the use cases for it. Please describe the usability problem you are having. Please keep this section focused on the problem and not on the suggested solution.
+        Describe the problem or need this feature will solve.
+        Focus on the real-world usage, not the solution itself.
+        Explain why this feature is useful.
+      placeholder: |
+        Example:
+        I often struggle with fast typing because...
     validations:
       required: true
 
   - type: textarea
-    id: keyboard-proposal
+    id: proposal
     attributes:
-      label: Proposal
+      label: Proposal / Idea
       description: |
-        If you have an idea for a way to address the problem, please describe it below.
-
-        In this section, it's helpful to include specific examples of how what you are suggesting might look in the application. If this is a standard feature in some other keyboards, you may want to mention it here and attach screenshots if applicable.
+        If you have a solution or idea, describe it here.
+        You can include UI ideas, behavior examples, or comparisons with other keyboards.
+      placeholder: |
+        Example:
+        The keyboard could include a swipe gesture for...
     validations:
       required: false
 
   - type: textarea
-    id: keyboard-references
+    id: references
     attributes:
-      label: References
+      label: References (Optional)
       description: |
-        Are there any other GitHub issues, whether open or closed, that are related to the problem you've described above or to the suggested solution? If so, please create a list below that mentions each of them. For example:
-        ```
-          - #10
-        ```
+        Mention any related issues, apps, or examples.
+        You can include screenshots or comparisons if helpful.
+      placeholder: |
+        - Similar feature in Gboard
+        - Related idea #12
     validations:
       required: false
 
   - type: markdown
     attributes:
       value: |
-        **Note:** If the submit button is disabled and you have filled out all required fields, please check that you did not forget a **Title** for the issue.
+        💡 Tip: Make sure your feature request is clear and focused on a single idea.
