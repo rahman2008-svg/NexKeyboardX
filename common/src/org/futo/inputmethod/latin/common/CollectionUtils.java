@@ -1,22 +1,6 @@
-/*
- * Copyright (C) 2012 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.nexvora.keyboard.latin.common;
 
-package org.futo.inputmethod.latin.common;
-
-import org.futo.inputmethod.annotations.UsedForTesting;
+import com.nexvora.keyboard.annotations.UsedForTesting;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,52 +10,61 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Utility methods for working with collections.
+ * Utility methods for working with Java collections.
+ *
+ * Provides helper functions for safe array and collection operations
+ * used in keyboard and dictionary processing.
  */
 public final class CollectionUtils {
+
     private CollectionUtils() {
-        // This utility class is not publicly instantiable.
+        // Utility class - no instantiation allowed
     }
 
     /**
-     * Converts a sub-range of the given array to an ArrayList of the appropriate type.
-     * @param array Array to be converted.
-     * @param start First index inclusive to be converted.
-     * @param end Last index exclusive to be converted.
-     * @throws IllegalArgumentException if start or end are out of range or start &gt; end.
+     * Converts a sub-range of an array into an ArrayList.
+     *
+     * @param array input array
+     * @param start start index (inclusive)
+     * @param end end index (exclusive)
+     * @return ArrayList containing selected elements
+     * @throws IllegalArgumentException if indices are invalid
      */
     @Nonnull
-    public static <E> ArrayList<E> arrayAsList(@Nonnull final E[] array, final int start,
-            final int end) {
+    public static <E> ArrayList<E> arrayAsList(@Nonnull final E[] array,
+                                              final int start,
+                                              final int end) {
+
         if (start < 0 || start > end || end > array.length) {
-            throw new IllegalArgumentException("Invalid start: " + start + " end: " + end
-                    + " with array.length: " + array.length);
+            throw new IllegalArgumentException(
+                    "Invalid range: start=" + start +
+                    ", end=" + end +
+                    ", length=" + array.length
+            );
         }
 
         final ArrayList<E> list = new ArrayList<>(end - start);
+
         for (int i = start; i < end; i++) {
             list.add(array[i]);
         }
+
         return list;
     }
 
     /**
-     * Tests whether c contains no elements, true if c is null or c is empty.
-     * @param c Collection to test.
-     * @return Whether c contains no elements.
+     * Checks whether a collection is null or empty.
      */
     @UsedForTesting
-    public static boolean isNullOrEmpty(@Nullable final Collection c) {
+    public static boolean isNullOrEmpty(@Nullable final Collection<?> c) {
         return c == null || c.isEmpty();
     }
 
     /**
-     * Tests whether map contains no elements, true if map is null or map is empty.
-     * @param map Map to test.
-     * @return Whether map contains no elements.
+     * Checks whether a map is null or empty.
      */
     @UsedForTesting
-    public static boolean isNullOrEmpty(@Nullable final Map map) {
+    public static boolean isNullOrEmpty(@Nullable final Map<?, ?> map) {
         return map == null || map.isEmpty();
     }
 }
