@@ -1,14 +1,22 @@
 blank_issues_enabled: false
+
 contact_links:
-  - name: Want to request a new keyboard layout?
-    url: https://github.com/futo-org/futo-keyboard-layouts/issues
-    about: Open it on a dedicated keyboard layouts repository.
-  - name: Need a FUTO Keyboard license?
-    url: https://pay.futo.org/api/PaymentPortal
-    about: Purchase a FUTO Keyboard license with FutoPay
-  - name: Zulip Chat
-    url: https://chat.futo.org/#narrow/stream/53-Keyboard
-    about: FUTO Keyboard community chat
-  - name: Discord Chat (if you don't like Zulip)
-    url: https://keyboard.futo.org/discord
-    about: FUTO Keyboard community chat
+  - name: NexVora Keyboard Feature Requests
+    url: https://github.com/YOUR_USERNAME/YOUR_REPO/issues/new?template=2-feature_request.yml
+    about: Suggest new features or improvements for NexVora Keyboard.
+
+  - name: NexVora Keyboard Bug Reports
+    url: https://github.com/YOUR_USERNAME/YOUR_REPO/issues/new?template=1-bug_report.yml
+    about: Report crashes, bugs, or unexpected behavior.
+
+  - name: NexVora Keyboard Documentation Issues
+    url: https://github.com/YOUR_USERNAME/YOUR_REPO/issues/new?template=3-documentation_issue.yml
+    about: Report or improve documentation.
+
+  - name: Developer Contact (Prince AR Abdur Rahman)
+    url: https://www.facebook.com/share/1BNn32qoJo/
+    about: Official developer profile for NexVora Lab's Ofc
+
+  - name: Instagram Developer Profile
+    url: https://www.instagram.com/ur___abdur____rahman__2008
+    about: Follow developer updates and announcements.
