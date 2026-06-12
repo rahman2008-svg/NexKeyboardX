@@ -1,49 +1,23 @@
+
 workflows:
-android-release:
-name: NexKeyboard X Release
+  nexkeyboardx:
+    name: NexKeyboard X
 
-max_build_duration: 120
+    max_build_duration: 120
 
-environment:
-  java: 17
+    environment:
+      java: 17
 
-triggering:
-  events:
-    - push
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.gradle/wrapper
 
-  branch_patterns:
-    - pattern: master
-      include: true
-      source: true
+    scripts:
+      - chmod +x gradlew
+      - ./gradlew tasks
+      - ./gradlew assembleDebug --stacktrace
 
-cache:
-  cache_paths:
-    - ~/.gradle/caches
-    - ~/.gradle/wrapper
-
-scripts:
-  - name: Grant Gradle permission
-    script: |
-      chmod +x gradlew
-
-  - name: Show project files
-    script: |
-      pwd
-      ls -la
-
-  - name: Build Debug APK
-    script: |
-      ./gradlew assembleDebug --stacktrace
-
-  - name: Build Release Bundle
-    script: |
-      ./gradlew bundleRelease --stacktrace
-
-artifacts:
-  - "**/build/outputs/**/*.apk"
-  - "**/build/outputs/**/*.aab"
-
-publishing:
-  email:
-    recipients:
-      - your-email@example.com
+    artifacts:
+      - "**/*.apk"
+      - "**/*.aab"
