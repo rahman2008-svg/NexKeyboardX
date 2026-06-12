@@ -1,0 +1,41 @@
+workflows:
+nexkeyboardx-android:
+name: NexKeyboard X Android Build
+
+max_build_duration: 120
+
+environment:
+  vars:
+    PACKAGE_NAME: "com.nexvora.nexkeyboardx"
+
+  java: 17
+
+triggering:
+  events:
+    - push
+  branch_patterns:
+    - pattern: main
+      include: true
+      source: true
+
+scripts:
+  - name: Set Gradle permissions
+    script: |
+      chmod +x ./gradlew
+
+  - name: Build Debug APK
+    script: |
+      ./gradlew assembleDebug
+
+  - name: Build Release AAB
+    script: |
+      ./gradlew bundleRelease
+
+artifacts:
+  - app/build/outputs/**/*.apk
+  - app/build/outputs/**/*.aab
+
+publishing:
+  email:
+    recipients:
+      - your-email@example.com
