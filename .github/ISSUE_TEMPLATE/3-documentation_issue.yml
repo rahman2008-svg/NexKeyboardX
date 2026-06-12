@@ -1,68 +1,66 @@
 name: Documentation Issue
-description: Report an issue or suggest a change in the documentation.
-labels: ["Documentation"]
+description: Report missing, unclear, or incorrect documentation in NexVora Keyboard.
+labels: ["documentation"]
 title: "Documentation: "
-type: task
-projects: ["futo-org/23"]
+
 body:
   - type: markdown
     attributes:
       value: |
-        # Thank you for opening a documentation change request.
+        # 📘 NexVora Keyboard Documentation Issue
 
-        The [android-keyboard](https://github.com/futo-org/android-keyboard) issue tracker is reserved for issues relating to the FUTO Keyboard Android Application. Use the `Documentation` issue type to report problems with the documentation in our code repositories, inside the application, or on [https://keyboard.futo.org](https://keyboard.futo.org)
+        Thank you for helping improve the documentation.
 
-        Technical writers monitor this issue type, so report FUTO Keyboard bugs or feature requests with the `Bug report` or `Feature Request` issue types instead to get engineering attention.
-
-        For general usage questions, please see the [FUTO Keyboard Zulip Channel](https://chat.futo.org/#narrow/stream/53-Keyboard) or the [FUTO Keyboard Discord](https://keyboard.futo.org/discord)
+        ⚠️ Please note:
+        - This section is only for documentation improvements or issues.
+        - Do not report bugs or feature requests here.
+        - Make sure your issue is clear and specific.
 
   - type: textarea
-    id: keyboard-affected-pages
+    id: affected-pages
     attributes:
-      label: Affected Pages
-      description: |
-          Link to or describe the pages relevant to your documentation change request.
-      placeholder:
-      value:
+      label: Affected Pages / Sections
+      description: Mention the file, section, or topic where the documentation issue exists.
+      placeholder: |
+        Example:
+        Settings → Keyboard customization section
     validations:
       required: false
 
   - type: textarea
-    id: keyboard-problem
+    id: problem
     attributes:
-      label: What is the docs issue?
-      description: What problems or suggestions do you have about the documentation?
-      placeholder:
-      value:
+      label: What is the issue?
+      description: Explain what is wrong, missing, or unclear in the documentation.
+      placeholder: |
+        Example:
+        The instructions for enabling swipe typing are unclear...
     validations:
       required: true
 
   - type: textarea
-    id: keyboard-proposal
+    id: proposal
     attributes:
-      label: Proposal
-      description: What documentation changes would fix this issue and where would you expect to find them? Are one or more page headings unclear? Do one or more pages need additional context, examples, or warnings? Do we need a new page or section dedicated to a specific topic?  Your ideas help us understand what you and other users need from our documentation and how we can improve the content.
-      placeholder:
-      value:
+      label: Suggested Improvement
+      description: Describe how the documentation should be improved or rewritten.
+      placeholder: |
+        Example:
+        Add step-by-step guide with screenshots for swipe typing feature...
     validations:
       required: false
 
   - type: textarea
-    id: keyboard-references
+    id: references
     attributes:
-      label: References
-      description: |
-        Are there any other open or closed GitLab/GitHub issues related to the problem or solution you described? If so, list them below. For example:
-        ```
-          - #10
-        ```
-      placeholder:
-      value:
+      label: References (Optional)
+      description: Link related issues, docs, or examples if available.
+      placeholder: |
+        - Related issue #12
+        - Similar documentation in other keyboards
     validations:
       required: false
 
   - type: markdown
     attributes:
       value: |
-        **Note:** If the submit button is disabled and you have filled out all required fields, please check that you did not forget a **Title** for the issue.
-
+        💡 Tip: Clear and simple explanations help us improve documentation faster.
